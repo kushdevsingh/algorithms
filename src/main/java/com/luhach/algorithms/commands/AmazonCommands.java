@@ -1,7 +1,10 @@
-package com.luhach.algorithms.solutions;
+package com.luhach.algorithms.commands;
 
 
 import com.luhach.algorithms.amazon.ScoreBoard;
+import com.luhach.algorithms.utils.LinkedList;
+import com.luhach.algorithms.utils.Node;
+import com.luhach.algorithms.utils.SearchAndSort;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +17,7 @@ import java.util.Arrays;
 
 
 @ShellComponent
-public class Impl {
-
-    @Autowired
-    private Utils utils;
+public class AmazonCommands {
 
     @Autowired
     private SearchAndSort searchAndSort;
@@ -25,7 +25,8 @@ public class Impl {
     @Autowired
     private ScoreBoard scoreBoard;
 
-    private static final Logger LOG = LoggerFactory.getLogger(Impl.class);
+
+    private static final Logger LOG = LoggerFactory.getLogger(AmazonCommands.class);
 
     public int[] twoSum(int[] nums, int target) {
         for(int i=0;i<nums.length-1;i++){
@@ -47,7 +48,7 @@ public class Impl {
 
 }
     @ShellMethod("Reverse Array")
-public String reverseArray(@ShellOption(arity=50) int [] arr){
+    public String reverseArray(@ShellOption(arity=50) int [] arr){
         int left=0,right=arr.length-1;
         int swap;
         while(left<=right){
@@ -63,7 +64,7 @@ public String reverseArray(@ShellOption(arity=50) int [] arr){
     @ShellMethod("Add two integers together.")
     public String reverseList(@ShellOption(arity=50) int [] arr)  {
 
-        LinkedList newList=new LinkedList();
+        LinkedList newList = new LinkedList();
         for (int i=0;i< arr.length;i++){
             newList.add(new Node(arr[i]));
         }
@@ -90,8 +91,8 @@ public String reverseArray(@ShellOption(arity=50) int [] arr){
         return  searchAndSort.binarySearch(a,find);
     }
 
-    @ShellMethod("QuickSort")
-    public String qs(@ShellOption(arity=50) int[] a)  {
+    @ShellMethod(key="quickSort", value =" Sort integer Array.Command Format : quickSort 10 1 5 3 4 78 45 6 1 89")
+    public String qs(@ShellOption(arity=10) int[] a)  {
         return  Arrays.toString(searchAndSort.quickSort(a,0,a.length-1));
     }
 
@@ -108,12 +109,5 @@ public String reverseArray(@ShellOption(arity=50) int [] arr){
         scoreBoard.getTopPlayers(top);
     }
 
-//    @ShellMethod("Graph")
-//    public int maxNumber(@ShellOption(arity=10) int[] arr){
-//        LinkedList newList=new LinkedList();
-//        for (int i=0;i< arr.length;i++){
-//            newList.add(new Node(arr[i]));
-//        }
-//    }
 
 }

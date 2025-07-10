@@ -1,18 +1,16 @@
-package com.luhach.algorithms.solutions;
-
+package com.luhach.algorithms.utils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class LinkedList {
 
-    private static final Logger LOG = LoggerFactory.getLogger(Impl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(LinkedList.class);
 
-    static Node head;
-    static Node tail;
-    static int size;
+    public static Node head;
+    public static Node tail;
+    public static int size;
 
-    LinkedList(){}
     public boolean isEmpty(){return this.head==null?true:false; }
 
     public void add(Node nextNode) {

@@ -1,11 +1,8 @@
-package com.luhach.algorithms.solutions;
+package com.luhach.algorithms.utils;
 
-import org.jline.utils.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-
-import java.util.Arrays;
 
 @Service
 public class SearchAndSort {
@@ -31,15 +28,11 @@ public class SearchAndSort {
     }
     
     public int[] quickSort(int arr[],int low,int high){
-//        this.quickSortInput=arr;
-//        LOG.info("Recursion Call:{}",start);
         if(arr.length<2){
             return arr;
         }
         if(low < high) {
             int partitionIndex = partitionStart(arr, low, high);
-//            LOG.info("Array:{}", Arrays.toString(arr));
-
             quickSort(arr, low, partitionIndex - 1);
             quickSort(arr, partitionIndex + 1, high);
         }

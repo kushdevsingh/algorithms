@@ -1,4 +1,4 @@
-package com.luhach.algorithms.solutions;
+package com.luhach.algorithms.utils;
 
 import org.springframework.stereotype.Service;
 
